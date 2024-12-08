@@ -4,12 +4,19 @@ const setCookie = (tokens) => {
 };
 
 const getCookie = (cookieName) => {
-  return document.cookie
-    ? document.cookie
-        .split(";")
-        .find((token) => token.trim().split("=")[0] === cookieName)
-        .split("=")[1]
-    : "";
+  const cookie = document.cookie;
+  let cookieValue = "";
+  if (cookie.includes(";")) {
+    cookieValue = document.cookie
+      ? document.cookie
+          .split(";")
+          .find((token) => token.trim().split("=")[0] === cookieName)
+          .split("=")[1]
+      : "";
+  } else if (cookie.includes(cookieName)) {
+    cookieValue = cookie.split("=")[1];
+  }
+  return cookieValue;
 };
 
 export { setCookie, getCookie };

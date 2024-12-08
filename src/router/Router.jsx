@@ -1,4 +1,4 @@
-import { isError, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Route, Routes } from "react-router-dom";
 
 import { getProfile } from "src/services/user";
