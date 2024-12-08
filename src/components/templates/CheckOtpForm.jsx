@@ -35,8 +35,10 @@ function CheckOtpForm({ mobile, code, setCode, setStep, setError }) {
         value={code}
         onChange={(e) => setCode(e.target.value)}
       />
-      <button type="submit">ورود</button>
-      <button className={styles.backButton} onClick={() => setStep(1)}>تغییر شماره موبایل</button>
+      <div>
+        <button type="submit">ورود</button>
+        <button className={styles.backButton} onClick={() => setStep(1)}>تغییر شماره موبایل</button>
+      </div>
     </form>
   );
 }

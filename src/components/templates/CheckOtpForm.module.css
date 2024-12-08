@@ -44,6 +44,7 @@
   border: 1px solid #a62626;
   width: 150px;
   margin-top: 30px;
+  margin-right: 10px;
 }
 
 .form .backButton:hover {
