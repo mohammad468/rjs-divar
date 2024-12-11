@@ -1,9 +1,7 @@
-import styles from "./Footer.module.css";
-
 function Footer() {
   return (
-    <footer className={styles.footer}>
-      <p>developed by Mohammad with ❤️</p>
+    <footer className="text-center mt-24 pt-3 border-t-2 border-t-gray-200">
+      <p className="font-mono font-light">❤️ developed by Mohammad with</p>
     </footer>
   );
 }
