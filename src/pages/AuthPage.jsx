@@ -15,6 +15,7 @@ function AuthPage() {
   }, [error]);
 
   useEffect(() => {
+    console.log(step);
     if(step === 2) toast.success("کد تایید به موبایل شما ارسال شد");
     if(step === 3) toast.success("ورود با موفقیت انجام شد");
   }, [step]);

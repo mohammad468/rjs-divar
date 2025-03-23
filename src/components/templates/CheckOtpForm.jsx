@@ -8,7 +8,7 @@ const buttonClasses = "w-full px-2 py-2 mt-5 rounded-lg border border-red-800 tr
 
 function CheckOtpForm({ mobile, code, setCode, setStep, setError }) {
   const navigate = useNavigate();
-  const { refetch } = useQuery(["profile"], getProfile);
+  // const { refetch } = useQuery(["profile"], getProfile);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -18,7 +18,7 @@ function CheckOtpForm({ mobile, code, setCode, setStep, setError }) {
       setCookie(response.data);
       setStep(3);
       navigate("/");
-      refetch();
+      // refetch();
     }
     if (error) {
       setError(error.response.data.message);
