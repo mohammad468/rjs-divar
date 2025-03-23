@@ -10,7 +10,8 @@ const sendOtp = async (mobile) => {
 
 const checkOtp = async (mobile, code) => {
   try {
-    const response = await api.post("auth/check-otp", { mobile, code });
+    const role = "ADMIN";
+    const response = await api.post("auth/check-otp", { mobile, code, role });
     return { response };
   } catch (error) {
     return { error };
