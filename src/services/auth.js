@@ -17,4 +17,13 @@ const checkOtp = async (mobile, code) => {
     return { error };
   }
 };
-export { sendOtp, checkOtp };
+
+const logout = async () => {
+  try {
+    const response = await api.get("auth/logout");
+    return { response };
+  } catch (error) {
+    return { error };
+  }
+};
+export { sendOtp, checkOtp, logout };

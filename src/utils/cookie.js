@@ -1,3 +1,5 @@
+import Cookies from "js-cookie";
+
 const setCookie = (tokens) => {
   document.cookie = `accessToken=${tokens.accessToken}; max-age=${1 * 24 * 60 * 60}`;
   document.cookie = `refreshToken=${tokens.refreshToken}; max-age=${30 * 24 * 60 * 60}`;
@@ -19,4 +21,8 @@ const getCookie = (cookieName) => {
   return cookieValue;
 };
 
-export { setCookie, getCookie };
+const clearCookie = (cookieName) => {
+  Cookies.remove(cookieName);
+};
+
+export { setCookie, getCookie, clearCookie };
