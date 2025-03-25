@@ -43,7 +43,7 @@ function CategoryForm() {
     mutate(form);
   };
   return (
-    <div className="bg-gray-300">
+    <div className="bg-gray-300 rounded-lg">
       <form className="inline-block p-3 border-2 border-gray-300 rounded-xl" onChange={changeHandler} onSubmit={submitHandler}>
         <h3 className="text-lg font-bold m-auto mb-8 border-b-2 border-b-red-800 w-fit pb-1">دسته بندی جدید</h3>
         {
