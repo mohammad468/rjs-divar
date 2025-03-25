@@ -1,14 +1,10 @@
-import { useMutation } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import CategoryItem from "./CategoryItem";
 import { findAllCategory } from "src/services/admin";
 import { useEffect } from "react";
 
 function CategoryList() {
-  const { mutate, isLoading, data } = useMutation(findAllCategory);
-
-  useEffect(() => {
-    mutate();
-  }, []);
+  const { data, isLoading, error } = useQuery(["findAllCategory"], findAllCategory);
 
   return (
     <div className="bg-gray-300 rounded-lg w-full p-3 flex flex-col gap-y-2">
