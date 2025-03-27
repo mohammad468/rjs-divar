@@ -7,6 +7,7 @@ import SendOtpFrom from "../components/templates/SendOtpFrom";
 function AuthPage() {
   const [step, setStep] = useState(1);
   const [mobile, setMobile] = useState("");
+  const [fullName, setFullName] = useState("");
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
 
@@ -15,15 +16,21 @@ function AuthPage() {
   }, [error]);
 
   useEffect(() => {
-    console.log(step);
-    if(step === 2) toast.success("کد تایید به موبایل شما ارسال شد");
-    if(step === 3) toast.success("ورود با موفقیت انجام شد");
+    if (step === 2) toast.success("کد تایید به موبایل شما ارسال شد");
+    if (step === 3) toast.success("ورود با موفقیت انجام شد");
   }, [step]);
 
   return (
     <div>
       {step === 1 && (
-        <SendOtpFrom setStep={setStep} mobile={mobile} setMobile={setMobile} setError={setError} />
+        <SendOtpFrom
+          setStep={setStep}
+          mobile={mobile}
+          setMobile={setMobile}
+          setError={setError}
+          fullName={fullName}
+          setFullName={setFullName}
+        />
       )}
       {step === 2 && (
         <CheckOtpForm

@@ -2,6 +2,7 @@ import { useState } from "react";
 import CategoryManagement from "./category/CategoryManagement";
 import CreateCategory from "./category/CreateCategory";
 import DashboardItems from "./DashboardItems";
+import UserManagement from "./user/UserManagement";
 
 function Dashboard() {
   const [select, setSelect] = useState(0);
@@ -12,6 +13,7 @@ function Dashboard() {
       <div className="col-span-12 md:col-span-8 lg:col-span-9 bg-gray-100 rounded-xl h-[calc(100vh_-_120px)] overflow-auto sticky top-[95px]">
         {select === 0 && <CategoryManagement />}
         {select === 1 && <CreateCategory />}
+        {select === 2 && <UserManagement />}
       </div>
     </div>
   );

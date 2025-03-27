@@ -28,6 +28,10 @@ function CategoryItem({ category }) {
     deleteMutate(_id);
   };
 
+  const editCategoryHandler = () => {
+    toast.error("در حال توسعه");
+  }
+
   return (
     <div className="bg-white rounded-md px-2 py-2">
       <div className="flex justify-between items-center">
@@ -48,7 +52,7 @@ function CategoryItem({ category }) {
           )}
         </div>
         <div className="flex gap-x-3 pe-3">
-          <button className="p-2 text-blue-500 bg-blue-100 rounded hover:bg-blue-200 transition duration-300" title="ویرایش">
+          <button onClick={editCategoryHandler} className="p-2 text-blue-500 bg-blue-100 rounded hover:bg-blue-200 transition duration-300" title="ویرایش">
             <AiOutlineEdit size={20} />
           </button>
           <button onClick={deleteCategoryHandler} className="p-2 text-red-500 bg-red-100 rounded hover:bg-red-200 transition duration-300" title="حذف">
