@@ -7,7 +7,7 @@ import RegisterAnAdBtn from "src/components/buttons/RegisterAnAdBtn";
 import { logout } from "src/services/auth";
 import { clearCookie } from "src/utils/cookie";
 
-const headerClass = "flex justify-between items-center border-b-2 bg-white border-b-gray-200 p-3 mb-5 sticky top-0";
+const headerClass = "flex justify-between items-center border-b-2 bg-white border-b-gray-200 p-3 mb-5 sticky top-0 z-10";
 
 function Header() {
   const navigate = useNavigate();
