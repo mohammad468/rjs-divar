@@ -2,7 +2,6 @@ import { HiChartPie, HiDocumentPlus, HiDocumentText, HiMiniSquares2X2, HiMiniSqu
 import { Link } from "react-router-dom";
 
 function DashboardItem({ title, name, icon, select, setSelect, index }) {
-  console.log(icon);
   return (
     <Link onClick={() => setSelect(index)} className={`flex items-center gap-2 p-3 ${select === index && "bg-red-800 text-white"} ${select !== index && "bg-gray-300 text-black"} rounded-md cursor-pointer mb-3`}>
       {icon === "HiMiniSquares2X2" && <HiMiniSquares2X2 size={25} />}

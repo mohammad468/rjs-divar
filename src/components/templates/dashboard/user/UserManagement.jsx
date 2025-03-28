@@ -4,7 +4,6 @@ import ShowSingleUser from "./components/ShowSingleUser";
 
 function UserManagement() {
   const { data, error, isLoading } = useQuery(["users"], getUsers);
-  console.log({ data, error, isLoading });
 
   return (
     <div>
