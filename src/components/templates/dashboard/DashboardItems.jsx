@@ -11,6 +11,7 @@ function DashboardItems({select, setSelect}) {
               key={dashboardItem.name}
               title={dashboardItem.title}
               name={dashboardItem.name}
+              icon={dashboardItem.icon}
               index={index}
               select={select}
               setSelect={setSelect}
