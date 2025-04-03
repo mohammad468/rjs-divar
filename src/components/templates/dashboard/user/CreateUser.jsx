@@ -32,7 +32,7 @@ function CreateUser() {
   return (
     <div className="rounded-lg flex justify-center items-center h-full w-full">
       <form className="inline-block p-5 rounded-xl bg-gray-300" onSubmit={submitHandler}>
-        <h3 className="text-lg font-bold m-auto mb-8 border-b-2 border-b-red-800 w-fit pb-1">دسته بندی جدید</h3>
+        <h3 className="text-lg font-bold m-auto mb-8 border-b-2 border-b-red-800 w-fit pb-1">کاربر جدید</h3>
         <TextInput title="نام و نام خانوادگی" name="fullName" value={form.fullName} onChange={changeHandler} isLoading={isLoading} />
         <TextInput title="شماره موبایل" name="mobile" value={form.mobile} onChange={changeHandler} isLoading={isLoading} />
         <CreateUserBtn isLoading={isLoading} />
