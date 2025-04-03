@@ -3,6 +3,7 @@ import CategoryManagement from "./category/CategoryManagement";
 import CreateCategory from "./category/CreateCategory";
 import DashboardItems from "./DashboardItems";
 import UserManagement from "./user/UserManagement";
+import CreateUser from "./user/CreateUser";
 
 function Dashboard() {
   const [select, setSelect] = useState(0);
@@ -14,6 +15,7 @@ function Dashboard() {
         {select === 0 && <CategoryManagement />}
         {select === 1 && <CreateCategory />}
         {select === 2 && <UserManagement />}
+        {select === 3 && <CreateUser />}
       </div>
     </div>
   );

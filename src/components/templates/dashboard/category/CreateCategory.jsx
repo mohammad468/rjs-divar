@@ -9,7 +9,6 @@ import TextInput from "./components/TextInput";
 
 function CreateCategory() {
   const [form, setForm] = useState({ name: "", slug: "", icon: "" });
-  const [errorDes, setErrorDes] = useState(null);
 
   const { mutate, isLoading } = useMutation(addCategory, {
     onSuccess: (data) => {
