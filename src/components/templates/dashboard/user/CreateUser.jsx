@@ -10,7 +10,6 @@ function CreateUser() {
 
   const { mutate, isLoading } = useMutation(addUser, {
     onSuccess: (data) => {
-        console.log(data);
       toast.success(`کاربر ${form.fullName} با موفقیت ایجاد شد`);
       setForm({ fullName: "", mobile: "" });
       refetch();
