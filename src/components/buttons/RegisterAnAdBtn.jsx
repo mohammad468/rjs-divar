@@ -5,7 +5,7 @@ const btnClass = "bg-red-800 text-white px-3 py-2 rounded-md text-center";
 
 function RegisterAnAdBtn() {
   return (
-    <Link to="/dashboard" className={btnClass}>
+    <Link to="/create-ad" className={btnClass}>
       ثبت آگهی
     </Link>
   );
