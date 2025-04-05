@@ -17,7 +17,7 @@ function Header() {
     clearCookie("accessToken");
     if(error) toast.error(`خطا: ${error.message}`);
     if(response) toast.success("خروج با موفقیت انجام شد");
-    navigate("/");
+    navigate("/auth");
   };
 
   return (
