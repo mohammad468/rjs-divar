@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Navigate, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 import { getProfile } from "src/services/user";
 
@@ -13,15 +14,21 @@ import MePage from "src/pages/MePage";
 
 function Router() {
   const { data, error, isLoading, isError, isFetching } = useQuery(["profile"], getProfile);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    if (data?.data?.role === "ADMIN") setIsAdmin(true);
+  }, [data]);
 
   if (isLoading) return <Loader />;
 
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route path="/dashboard" element={data?.data?.role === "ADMIN" ? <DashboardPage /> : <AuthPage />} />
-      <Route path="/me" element={data ? <MePage /> : <AuthPage />} />
-      <Route path="/create-ad" element={data ? <AdPage /> : <AuthPage />} />
+      <Route path="/auth" element={<AuthPage />} />
+      <Route path="/dashboard" element={isAdmin ? <DashboardPage /> : <Navigate to="/auth" />} />
+      <Route path="/me" element={data ? <MePage /> : <Navigate to="/auth" />} />
+      <Route path="/create-ad" element={data ? <AdPage /> : <Navigate to="/auth" />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );

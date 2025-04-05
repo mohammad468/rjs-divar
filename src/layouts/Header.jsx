@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import AuthBtn from "src/components/buttons/AuthBtn";
@@ -14,13 +14,16 @@ const headerClass =
 
 function Header() {
   const navigate = useNavigate();
-  const { data } = useQuery(["profile"], getProfile);
+  const { data, refetch } = useQuery(["profile"], getProfile);
 
   const submitHandler = async () => {
-    const { response, error } = await logout();
+    const { error } = await logout();
     clearCookie("accessToken");
     if (error) toast.error(`خطا: ${error.message}`);
-    if (response) toast.success("خروج با موفقیت انجام شد");
+    if (!error) toast.success("خروج با موفقیت انجام شد");
+    const queryClient = useQueryClient();
+    queryClient.invalidateQueries({ queryKey: ["profile"] });
+    refetch();
     navigate("/");
   };
 
