@@ -1,36 +1,53 @@
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from "flowbite-react";
 import { useState } from "react";
 import { FaLocationArrow } from "react-icons/fa";
+import { iranCities } from "src/constants/iranCities";
 
 function Location() {
   const [openModal, setOpenModal] = useState(false);
+  const [locationList, setLocationList] = useState(["تهران"]);
+
+  const locationHandler = (cityName) => {
+    if (!locationList.find((findCity) => findCity === cityName)) {
+      setLocationList([...locationList, cityName]);
+    } else {
+      setLocationList(locationList.filter((city) => city !== cityName));
+    }
+  };
+
   return (
     <>
       <Button onClick={() => setOpenModal(true)} color="light">
-        تهران
+        {locationList.length === 0 && "جستجو در تمام شهرها"}
+        {locationList.length === 1 && locationList[0]}
+        {locationList.length > 1 && `${locationList.length} شهر انتخاب شده`}
         <FaLocationArrow className="mr-2 h-5 w-5" />
       </Button>
       <Modal show={openModal} onClose={() => setOpenModal(false)}>
-        <ModalHeader>Terms of Service</ModalHeader>
+        <ModalHeader>انتخاب شهر</ModalHeader>
         <ModalBody>
-          <div className="space-y-6">
-            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              With less than a month to go before the European Union enacts new consumer privacy laws
-              for its citizens, companies around the world are updating their terms of service
-              agreements to comply.
-            </p>
-            <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on
-              May 25 and is meant to ensure a common set of data rights in the European Union. It
-              requires organizations to notify users as soon as possible of high-risk data breaches
-              that could personally affect them.
-            </p>
+          <div className="flex flex-wrap gap-3">
+            {iranCities.map((city) => (
+              <Button
+                onClick={() => locationHandler(city.city)}
+                color={
+                  locationList.findIndex((cityName) => cityName === city.city) !== -1
+                    ? "default"
+                    : "light"
+                }
+                key={city.id}
+              >
+                {city.city}
+              </Button>
+            ))}
           </div>
         </ModalBody>
         <ModalFooter>
-          <Button onClick={() => setOpenModal(false)}>I accept</Button>
+          <Button className="me-3" onClick={() => setOpenModal(false)}>
+            ثبت
+          </Button>
           <Button color="gray" onClick={() => setOpenModal(false)}>
-            Decline
+            بستن
           </Button>
         </ModalFooter>
       </Modal>
