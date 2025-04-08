@@ -1,15 +1,17 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { Button } from "flowbite-react";
+import React from "react";
+import { FaRegUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function AuthBtn() {
   return (
     <Link to="/me">
-    <span className="flex items-center text-gray-500 h-12">
-      <img src="profile.svg" />
-      <p className="mr-1 text-sm">دیوار من</p>
-    </span>
-  </Link>
-  )
+      <Button color="light" className="border-none">
+        <FaRegUser size={18} />
+        <p className="mr-1 text-sm">دیوار من</p>
+      </Button>
+    </Link>
+  );
 }
 
-export default AuthBtn
+export default AuthBtn;

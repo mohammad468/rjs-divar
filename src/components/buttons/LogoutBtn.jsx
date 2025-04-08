@@ -1,12 +1,13 @@
+import { Button } from "flowbite-react";
 import React from "react";
-
-const btnClass = "bg-blue-800 text-white px-3 py-2 rounded-md text-center";
+import { HiLogout } from "react-icons/hi";
 
 function LogoutBtn({ submitHandler }) {
   return (
-    <button onClick={submitHandler} className={btnClass}>
+    <Button color="light" onClick={submitHandler}>
+      <HiLogout className="ml-2 h-5 w-5" />
       خروج
-    </button>
+    </Button>
   );
 }
 

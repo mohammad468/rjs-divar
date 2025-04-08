@@ -1,10 +1,14 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { Button, Navbar } from "flowbite-react";
+import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { FaLocationArrow, FaMoon, FaSun } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import AuthBtn from "src/components/buttons/AuthBtn";
 import DashboardBtn from "src/components/buttons/DashboardBtn";
 import LogoutBtn from "src/components/buttons/LogoutBtn";
 import RegisterAnAdBtn from "src/components/buttons/RegisterAnAdBtn";
+import Location from "src/components/templates/location/Location";
 import { logout } from "src/services/auth";
 import { getProfile } from "src/services/user";
 import { clearCookie } from "src/utils/cookie";
@@ -15,6 +19,16 @@ const headerClass =
 function Header() {
   const navigate = useNavigate();
   const { data, refetch } = useQuery(["profile"], getProfile);
+
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
 
   const submitHandler = async () => {
     const { error } = await logout();
@@ -28,15 +42,19 @@ function Header() {
   };
 
   return (
-    <header className={headerClass}>
+    <Navbar fluid className="sticky top-0 z-10 mb-2 backdrop-blur-sm bg-white/80 dark:bg-gray-800/80">
       <div className="flex items-center">
         <Link to="/">
           <img src="divar.svg" className="w-11 ml-10" />
         </Link>
-        <span className="flex items-center text-gray-500 h-12">
-          <img src="location.svg" />
-          <p className="mr-1 text-sm">تهران</p>
-        </span>
+        <Button
+          color={isDarkMode ? "dark" : "light"}
+          onClick={() => setIsDarkMode(!isDarkMode)}
+          className="flex items-center gap-2 ml-2"
+        >
+          {isDarkMode ? <FaSun /> : <FaMoon />}
+        </Button>
+        <Location />
       </div>
       <div className="flex items-center gap-x-3">
         <AuthBtn />
@@ -45,7 +63,7 @@ function Header() {
         <LogoutBtn submitHandler={submitHandler} />
       </div>
       <Toaster position="top-center" reverseOrder={false} />
-    </header>
+    </Navbar>
   );
 }
 
